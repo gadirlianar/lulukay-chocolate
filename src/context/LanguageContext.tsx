@@ -7,6 +7,7 @@ type Language = "RU" | "EN" | "KZ";
 interface LanguageContextType {
   lang: Language;
   toggleLang: () => void;
+  setLanguage: (lang: Language) => void;
   t: (key: string) => string;
 }
 
@@ -112,7 +113,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.rights": "© 2026 Lulukay Chocolate. Delivery in Pavlodar.",
     "float.tooltip": "Message Us",
     "placeholder.text": "Photo will be added"
-  }
+  },
   KZ: {
     "nav.about": "Біз туралы",
     "nav.catalog": "Каталог",
@@ -193,8 +194,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return translations[lang][key] || key;
   };
 
+  const setLanguage = (newLang: Language) => {
+    localStorage.setItem("lang", newLang);
+    setLang(newLang);
+  };
+
   return (
-    <LanguageContext.Provider value={{ lang, toggleLang, t }}>
+    <LanguageContext.Provider value={{ lang, toggleLang, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

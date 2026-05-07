@@ -34,20 +34,24 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button
+            <motion.button
               onClick={scrollToCatalog}
-              className="bg-primary text-bg px-8 py-4 rounded-full font-medium hover:scale-105 hover:bg-secondary transition-all shadow-lg hover:shadow-xl text-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-primary text-bg px-8 py-4 rounded-full font-medium hover:bg-secondary transition-colors shadow-lg hover:shadow-xl text-center"
             >
               {t("hero.btn.primary")}
-            </button>
-            <a
+            </motion.button>
+            <motion.a
               href="https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20сделать%20заказ..."
               target="_blank"
               rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="border-2 border-primary text-primary px-8 py-4 rounded-full font-medium hover:bg-primary/5 transition-colors text-center"
             >
               {t("hero.btn.outline")}
-            </a>
+            </motion.a>
           </div>
         </motion.div>
 

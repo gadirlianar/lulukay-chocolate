@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
-  const { lang, toggleLang, t } = useLanguage();
+  const { lang, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -59,16 +59,13 @@ export default function Navigation() {
         {/* Right Area */}
         <div className="hidden md:flex items-center gap-6">
           {/* Language Toggle */}
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface shadow-sm border border-accent/20 text-sm font-semibold hover:bg-accent/10 transition-colors"
-          >
-            <span className={lang === "RU" ? "text-primary" : "text-muted font-normal"}>RU</span>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface shadow-sm border border-accent/20 text-sm font-semibold">
+            <button onClick={() => setLanguage("RU")} className={lang === "RU" ? "text-primary" : "text-muted font-normal hover:text-primary transition-colors"}>RU</button>
             <span className="text-muted/50">|</span>
-            <span className={lang === "EN" ? "text-primary" : "text-muted font-normal"}>EN</span>
+            <button onClick={() => setLanguage("EN")} className={lang === "EN" ? "text-primary" : "text-muted font-normal hover:text-primary transition-colors"}>EN</button>
             <span className="text-muted/50">|</span>
-            <span className={lang === "KZ" ? "text-primary" : "text-muted font-normal"}>KZ</span>
-          </button>
+            <button onClick={() => setLanguage("KZ")} className={lang === "KZ" ? "text-primary" : "text-muted font-normal hover:text-primary transition-colors"}>KZ</button>
+          </div>
 
           {/* CTA */}
           <a
@@ -105,16 +102,13 @@ export default function Navigation() {
           
           <div className="h-px w-16 bg-accent/50 my-4"></div>
           
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-4 text-xl font-medium"
-          >
-            <span className={lang === "RU" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>RU</span>
+          <div className="flex items-center gap-4 text-xl font-medium">
+            <button onClick={() => { setLanguage("RU"); setMobileOpen(false); }} className={lang === "RU" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>RU</button>
             <span className="text-muted/50">|</span>
-            <span className={lang === "EN" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>EN</span>
+            <button onClick={() => { setLanguage("EN"); setMobileOpen(false); }} className={lang === "EN" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>EN</button>
             <span className="text-muted/50">|</span>
-            <span className={lang === "KZ" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>KZ</span>
-          </button>
+            <button onClick={() => { setLanguage("KZ"); setMobileOpen(false); }} className={lang === "KZ" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>KZ</button>
+          </div>
         </div>
       )}
     </header>

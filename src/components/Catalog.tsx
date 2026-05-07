@@ -25,9 +25,11 @@ export default function Catalog() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -12, rotateX: 2, rotateY: -2, zIndex: 10, boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)" }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-bg rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-accent/10 flex flex-col"
+            transition={{ duration: 0.4 }}
+            style={{ transformPerspective: 1000 }}
+            className="bg-bg rounded-[2rem] p-6 shadow-sm border border-accent/10 flex flex-col cursor-pointer"
           >
             <div className="relative w-full h-[300px] sm:h-[400px] mb-8">
               <Image
@@ -74,9 +76,11 @@ export default function Catalog() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -12, rotateX: 2, rotateY: 2, zIndex: 10, boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)" }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-bg rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-accent/10 flex flex-col"
+            transition={{ duration: 0.4, delay: 0.1 }}
+            style={{ transformPerspective: 1000 }}
+            className="bg-bg rounded-[2rem] p-6 shadow-sm border border-accent/10 flex flex-col cursor-pointer"
           >
             <div className="relative w-full h-[300px] sm:h-[400px] mb-8">
               <Image
