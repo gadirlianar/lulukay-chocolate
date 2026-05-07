@@ -66,6 +66,8 @@ export default function Navigation() {
             <span className={lang === "RU" ? "text-primary" : "text-muted font-normal"}>RU</span>
             <span className="text-muted/50">|</span>
             <span className={lang === "EN" ? "text-primary" : "text-muted font-normal"}>EN</span>
+            <span className="text-muted/50">|</span>
+            <span className={lang === "KZ" ? "text-primary" : "text-muted font-normal"}>KZ</span>
           </button>
 
           {/* CTA */}
@@ -110,6 +112,8 @@ export default function Navigation() {
             <span className={lang === "RU" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>RU</span>
             <span className="text-muted/50">|</span>
             <span className={lang === "EN" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>EN</span>
+            <span className="text-muted/50">|</span>
+            <span className={lang === "KZ" ? "text-primary underline decoration-2 underline-offset-4" : "text-muted"}>KZ</span>
           </button>
         </div>
       )}

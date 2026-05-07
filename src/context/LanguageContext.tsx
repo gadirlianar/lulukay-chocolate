@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Language = "RU" | "EN";
+type Language = "RU" | "EN" | "KZ";
 
 interface LanguageContextType {
   lang: Language;
@@ -113,6 +113,57 @@ const translations: Record<Language, Record<string, string>> = {
     "float.tooltip": "Message Us",
     "placeholder.text": "Photo will be added"
   }
+  KZ: {
+    "nav.about": "Біз туралы",
+    "nav.catalog": "Каталог",
+    "nav.reviews": "Пікірлер",
+    "nav.contact": "Байланыс",
+    "nav.cta": "WhatsApp арқылы тапсырыс беру",
+    "hero.eyebrow": "Павлодар • Қолдан жасалған • Таза",
+    "hero.title": "Әр бір тіскебасқа өнер 🍓",
+    "hero.subtitle": "Премиум Бельгиялық шоколадтағы шие мен финиктер, тапсырыс бойынша. Кез-келген жағдайға тамаша сыйлық. Павлодар бойынша жеткізу.",
+    "hero.btn.primary": "Каталогқа өту →",
+    "hero.btn.outline": "WhatsApp арқылы жазу",
+    "badge.1.title": "Тек жаңа жидектер",
+    "badge.1.sub": "Күнделікті сатып алу",
+    "badge.2.title": "Callebaut шоколад",
+    "badge.2.sub": "Шын бельгиялық",
+    "badge.3.title": "Тапсырысқа сай дизайн",
+    "badge.3.sub": "Кез-келген жағдайға",
+    "badge.4.title": "Павлодарға жеткізу",
+    "badge.4.sub": "Жылдам және мұқият",
+    "about.eyebrow": "Мен туралы",
+    "about.title": "Сәлем, мен Алуа 🫶",
+    "about.body": "Мен тапсырыс бойынша шоколадқа бөртшеленген шие мен финиктер жасаймын. Әр тапсырысты жүрегіммен жасап, әдемі жиынтықтарды дайындаймын.",
+    "about.sign": "— Алуа, Lulukay Chocolate негізін қалаушы",
+    "catalog.title": "Каталог",
+    "catalog.subtitle": "Өз идеалды жиынтығыңызды таңдаңыз",
+    "catalog.card1.title": "ШАҚТЫТЫ ҚОТТАРДАМА 🎁",
+    "catalog.card1.note": "Көбірек? Әрине! Кез-келген өлшемдегі жеке жиынтықты жасаймыз.",
+    "catalog.card1.btn": "Шие тапсырыс беру",
+    "catalog.card2.title": "Финиктер шоколадта 🫘🍫",
+    "catalog.card2.btn": "Финиктерді тапсырыс беру",
+    "catalog.hit": "ХИТ 🔥",
+    "howto.title": "Қалай тапсырыс беруге болады?",
+    "howto.subtitle": "Қарапайым — 3 қадам",
+    "howto.step1.title": "Жиынтығыңызды таңдаңыз",
+    "howto.step1.text": "Каталогты қарап, қалаған мөлшер мен түрді таңдаңыз.",
+    "howto.step2.title": "Бізге жазылыңыз",
+    "howto.step2.text": "WhatsApp немесе Instagram Direct арқылы бізбен байланысыңыз.",
+    "howto.step3.title": "Тапсырысыңызды алыңыз",
+    "howto.step3.text": "Алуа сіздің тапсырысыңызды дайындап, Павлодарға жеткізеді 🚕",
+    "howto.note": "📩 Тапсырыс тек WhatsApp және Instagram арқылы қабылданады. Telegram қолданбаймыз.",
+    "reviews.title": "Клиенттердің пікірлері 🤍",
+    "reviews.caption": "Instagram Stories-тен шолу",
+    "reviews.link": "Барлық пікірлерді Instagram-да көру →",
+    "contact.title": "Тапсырысыңызды күтеміз ✨",
+    "contact.subtitle": "Идеалды сыйлықтың мәліметтерін талқылау үшін қазір жазыңыз.",
+    "contact.btn.wa": "WhatsApp арқылы жазу",
+    "contact.btn.ig": "Instagram арқылы жазу",
+    "footer.rights": "© 2026 Lulukay Chocolate. Павлодарда жеткізу.",
+    "float.tooltip": "Бізге жазыңыз",
+    "placeholder.text": "Фотосурет енгізіледі"
+  },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -122,14 +173,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") as Language;
-    if (savedLang && (savedLang === "RU" || savedLang === "EN")) {
+    if (savedLang && (savedLang === "RU" || savedLang === "EN" || savedLang === "KZ")) {
       setLang(savedLang);
     }
   }, []);
 
   const toggleLang = () => {
     setLang(prev => {
-      const nextLang = prev === "RU" ? "EN" : "RU";
+      let nextLang: Language;
+      if (prev === "RU") nextLang = "EN";
+      else if (prev === "EN") nextLang = "KZ";
+      else nextLang = "RU";
       localStorage.setItem("lang", nextLang);
       return nextLang;
     });
