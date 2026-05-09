@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { handleConfettiClick } from "@/lib/confetti";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -12,6 +13,9 @@ export default function Hero() {
   const scrollToCatalog = () => {
     document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const whatsappHref =
+    "https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20сделать%20заказ...";
 
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
@@ -38,20 +42,21 @@ export default function Hero() {
               onClick={scrollToCatalog}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-primary text-bg px-8 py-4 rounded-full font-medium hover:bg-secondary transition-colors shadow-lg hover:shadow-xl text-center"
+              className="btn-magnetic bg-primary text-bg px-8 py-4 rounded-full font-medium hover:bg-secondary transition-colors shadow-lg hover:shadow-xl text-center"
             >
               {t("hero.btn.primary")}
             </motion.button>
-            <motion.a
-              href="https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20сделать%20заказ..."
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={(e) => {
+                e.preventDefault();
+                handleConfettiClick(whatsappHref);
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-primary text-primary px-8 py-4 rounded-full font-medium hover:bg-primary/5 transition-colors text-center"
+              className="btn-magnetic border-2 border-primary text-primary px-8 py-4 rounded-full font-medium hover:bg-primary/5 transition-colors text-center"
             >
               {t("hero.btn.outline")}
-            </motion.a>
+            </motion.button>
           </div>
         </motion.div>
 
@@ -65,7 +70,7 @@ export default function Hero() {
           {/* Decorative blur blob */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-accent/30 rounded-full blur-3xl -z-10"></div>
           
-          <div className="w-full h-full animate-[floating_4s_ease-in-out_infinite] relative">
+          <div className="w-full h-full animate-[floating_4s_ease-in-out_infinite] relative luxury-img-container rounded-[2rem]">
             <Image
               src="/images/hero.JPG"
               alt="Hero"

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Menu, X } from "lucide-react";
+import { handleConfettiClick } from "@/lib/confetti";
 
 export default function Navigation() {
   const { lang, setLanguage, t } = useLanguage();
@@ -68,14 +69,15 @@ export default function Navigation() {
           </div>
 
           {/* CTA */}
-          <a
-            href="https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20сделать%20заказ..."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-primary text-bg px-6 py-2.5 rounded-full text-sm font-semibold hover:scale-105 hover:bg-secondary transition-all"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleConfettiClick("https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20сделать%20заказ...");
+            }}
+            className="btn-magnetic bg-primary text-bg px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-secondary transition-all"
           >
             {t("nav.cta")}
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}

@@ -44,12 +44,14 @@ export default function About() {
           {/* Decorative offset border */}
           <div className="absolute inset-0 border-2 border-accent rounded-[2rem] translate-x-4 translate-y-4 -z-10"></div>
           
-          <Image
-            src="/images/about.png"
-            alt="About Alua"
-            fill
-            className="object-cover rounded-[2rem] shadow-xl"
-          />
+          <div className="luxury-img-container rounded-[2rem] w-full h-full">
+            <Image
+              src="/images/about.png"
+              alt="About Alua"
+              fill
+              className="object-cover rounded-[2rem] shadow-xl"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

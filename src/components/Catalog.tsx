@@ -4,9 +4,15 @@ import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { handleConfettiClick } from "@/lib/confetti";
 
 export default function Catalog() {
   const { t } = useLanguage();
+
+  const whatsappStrawberry =
+    "https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20заказать%20клубнику%20в%20шоколаде...";
+  const whatsappDates =
+    "https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20заказать%20финики%20в%20шоколаде...";
 
   return (
     <section id="catalog" className="py-24 px-6 bg-surface">
@@ -31,7 +37,7 @@ export default function Catalog() {
             style={{ transformPerspective: 1000 }}
             className="bg-bg rounded-[2rem] p-6 shadow-sm border border-accent/10 flex flex-col cursor-pointer"
           >
-            <div className="relative w-full h-[300px] sm:h-[400px] mb-8">
+            <div className="relative w-full h-[300px] sm:h-[400px] mb-8 luxury-img-container rounded-t-2xl md:rounded-[1.5rem]">
               <Image
                 src="/images/catalog1.png"
                 alt="Клубника в шоколаде"
@@ -60,14 +66,15 @@ export default function Catalog() {
                 <p className="text-sm text-muted text-center italic mb-6">
                   {t("catalog.card1.note")}
                 </p>
-                <a
-                  href="https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20заказать%20клубнику%20в%20шоколаде..."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full bg-primary text-bg py-4 rounded-full text-center font-medium hover:bg-secondary transition-colors"
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleConfettiClick(whatsappStrawberry);
+                  }}
+                  className="btn-magnetic block w-full bg-primary text-bg py-4 rounded-full text-center font-medium hover:bg-secondary transition-colors"
                 >
                   {t("catalog.card1.btn")}
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
@@ -82,7 +89,7 @@ export default function Catalog() {
             style={{ transformPerspective: 1000 }}
             className="bg-bg rounded-[2rem] p-6 shadow-sm border border-accent/10 flex flex-col cursor-pointer"
           >
-            <div className="relative w-full h-[300px] sm:h-[400px] mb-8">
+            <div className="relative w-full h-[300px] sm:h-[400px] mb-8 luxury-img-container rounded-t-2xl md:rounded-[1.5rem]">
               <Image
                 src="/images/catalog2.JPG"
                 alt="Финики в шоколаде"
@@ -105,14 +112,15 @@ export default function Catalog() {
               </div>
 
               <div className="mt-auto">
-                <a
-                  href="https://wa.me/77085037638?text=Здравствуйте%2C%20Алуа%21%20Хочу%20заказать%20финики%20в%20шоколаде..."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full border-2 border-primary text-primary py-4 rounded-full text-center font-medium hover:bg-primary/5 transition-colors"
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleConfettiClick(whatsappDates);
+                  }}
+                  className="btn-magnetic block w-full border-2 border-primary text-primary py-4 rounded-full text-center font-medium hover:bg-primary/5 transition-colors"
                 >
                   {t("catalog.card2.btn")}
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
